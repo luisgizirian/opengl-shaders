@@ -22,3 +22,4 @@ A Linux system, even a WSL2 (if you're on a modern Windows system), will do.
 
 - Mike Shah Channel: https://www.youtube.com/@MikeShah
 - https://www.shadertoy.com/
+- Inigo Quilez Channel: https://www.youtube.com/channel/UCdmAhiG8HQDlz8uyekw4ENw
