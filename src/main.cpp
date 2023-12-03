@@ -52,8 +52,8 @@ int main()
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
     // Before creating the window and OpenGL context
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4); // Change this to the desired number of sample
+    // SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+    // SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4); // Change this to the desired number of sample
 
     // Create a window
     SDL_Window* window = SDL_CreateWindow("OpenGL Shader", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_OPENGL);
@@ -114,18 +114,18 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    int value = 0;
-    SDL_GL_GetAttribute(SDL_GL_MULTISAMPLEBUFFERS, &value);
-    if (value == 0) {
-        std::cerr << "Multisampling is not supported" << std::endl;
-        SDL_GL_DeleteContext(glContext);
-        SDL_DestroyWindow(window);
-        SDL_Quit();
-        return -1;
-    }
-    // After creating the OpenGL context
-    glEnable(GL_MULTISAMPLE);
+    // int value = 0;
+    // SDL_GL_GetAttribute(SDL_GL_MULTISAMPLEBUFFERS, &value);
+    // if (value == 0) {
+    //     std::cerr << "Multisampling is not supported" << std::endl;
+    //     SDL_GL_DeleteContext(glContext);
+    //     SDL_DestroyWindow(window);
+    //     SDL_Quit();
+    //     return -1;
+    // }
 
+    // After creating the OpenGL context
+    // glEnable(GL_MULTISAMPLE);
 
     // Define a time constant with the transcurred seconds
     float time = 0.0f;
