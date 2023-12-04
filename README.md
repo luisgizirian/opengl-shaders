@@ -16,9 +16,13 @@ A Linux system, even a WSL2 (if you're on a modern Windows system), will do.
 `./prog`
 
 ## Sources
-- Kishimisu "An Introduction to Shader Art Coding" (https://www.youtube.com/watch?v=f4s1h2YETNY) using C++ and GLAD
-- Coder Space "Procedural 3D Engine, Ray Mrching OpenGL Tutorial" (https://www.youtube.com/watch?v=hUaYxqkrfjA)
+All samples slightly modidified to work under C++ and SDL2
+
+- Kishimisu "An Introduction to Shader Art Coding" (https://www.youtube.com/watch?v=f4s1h2YETNY) using C++ and GLAD at `/shaders/frag.glsl`
+- Coder Space "Procedural 3D Engine, Ray Mrching OpenGL Tutorial" (https://www.youtube.com/watch?v=hUaYxqkrfjA) at `/shaders/raymarching-full.glsl` and `/shaders/raymarching.glsl`
 - `hf_sdf` GLSL Library (https://mercury.sexy/hg_sdf)
+- NuSan "Corridor Travel" (https://www.shadertoy.com/view/3sXyRN) `/shaders/corridor.glsl`
+- Coder Space "The Planet Sine" (https://www.youtube.com/watch?v=u1pRapBEHlU) at `/shaders/plane.glsl`
 
 ## Related material
 
