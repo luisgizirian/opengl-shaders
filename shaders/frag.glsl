@@ -1,6 +1,6 @@
 #version 410 core
 
-uniform float iTime;
+uniform float u_Time;
 
 out vec4 FragColor;
 
@@ -26,9 +26,9 @@ void main()
 
         float d = length(uv) * exp(-length(uv0));
 
-        vec3 col =  palette(length(uv0) + i*.4 + iTime*.4);
+        vec3 col =  palette(length(uv0) + i*.4 + u_Time*.4);
 
-        d = sin(d*8. + iTime)/8.;
+        d = sin(d*8. + u_Time)/8.;
         d = abs(d);
 
         //d = smoothstep(0.0, 0.1, d);

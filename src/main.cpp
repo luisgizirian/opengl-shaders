@@ -6,11 +6,11 @@
 
 // Shader source code
 const char* vertexShaderSource = R"(
-    #version 330 core
-    layout (location = 0) in vec2 position;
+    #version 410 core
+    layout (location = 0) in vec3 position;
     void main()
     {
-        gl_Position = vec4(position, 0.0, 1.0);
+        gl_Position = vec4(position, 1.0);
     }
 )";
 
@@ -51,10 +51,6 @@ int main()
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
-    // Before creating the window and OpenGL context
-    // SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-    // SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4); // Change this to the desired number of sample
-
     // Create a window
     SDL_Window* window = SDL_CreateWindow("OpenGL Shader", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_OPENGL);
     if (!window)
@@ -89,7 +85,7 @@ int main()
     glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
     glCompileShader(vertexShader);
 
-    std::string fragmentShaderSource = LoadShadersAsString("shaders/frag.glsl");
+    std::string fragmentShaderSource = LoadShadersAsString("shaders/raymarching.glsl");
     const char* fragmentShaderSourcePtr = fragmentShaderSource.c_str();
 
     GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -114,19 +110,6 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    // int value = 0;
-    // SDL_GL_GetAttribute(SDL_GL_MULTISAMPLEBUFFERS, &value);
-    // if (value == 0) {
-    //     std::cerr << "Multisampling is not supported" << std::endl;
-    //     SDL_GL_DeleteContext(glContext);
-    //     SDL_DestroyWindow(window);
-    //     SDL_Quit();
-    //     return -1;
-    // }
-
-    // After creating the OpenGL context
-    // glEnable(GL_MULTISAMPLE);
-
     // Define a time constant with the transcurred seconds
     float time = 0.0f;
 
@@ -148,6 +131,10 @@ int main()
             }
         }
 
+        // Capture the mouse position
+        int mouseX, mouseY;
+        SDL_GetMouseState(&mouseX, &mouseY);
+
         // Update time
         time += 0.01f;
 
@@ -158,7 +145,13 @@ int main()
         glUseProgram(shaderProgram);
 
         // Set the time uniform
-        glUniform1f(glGetUniformLocation(shaderProgram, "iTime"), time);
+        glUniform1f(glGetUniformLocation(shaderProgram, "u_Time"), time);
+        
+        // Pass the window resolution as a vec2 uniform
+        glUniform2f(glGetUniformLocation(shaderProgram, "u_Resolution"), 800.0f, 600.0f);
+
+        // Pass the mouse position as a vec2 uniform
+        glUniform2f(glGetUniformLocation(shaderProgram, "u_Mouse"), mouseX, mouseY);
 
         // Bind the VBO
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
