@@ -92,6 +92,16 @@ int main()
     glShaderSource(fragmentShader, 1, &fragmentShaderSourcePtr, nullptr);
     glCompileShader(fragmentShader);
 
+    // Check for compilation errors
+    GLint success;
+    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
+    if (!success)
+    {
+        GLchar infoLog[512];
+        glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
+        std::cerr << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
+    }
+
     GLuint shaderProgram = glCreateProgram();
     glAttachShader(shaderProgram, vertexShader);
     glAttachShader(shaderProgram, fragmentShader);

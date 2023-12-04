@@ -15,7 +15,7 @@ const float TAU = (2*PI);
 
 // Sign function that doesn't return 0
 float sgn(float x) {
-	return (x<0)?-1:1;
+	return (x<0.0)?-1.0:1.0;
 }
 
 vec2 sgn(vec2 v) {
