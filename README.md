@@ -16,7 +16,8 @@ A Linux system, even a WSL2 (if you're on a modern Windows system), will do.
 `./prog`
 
 ## Sources
-- Kishimisu's "An Introduction to Shader Art Coding" (https://www.youtube.com/watch?v=f4s1h2YETNY) using C++ and GLAD
+- Kishimisu "An Introduction to Shader Art Coding" (https://www.youtube.com/watch?v=f4s1h2YETNY) using C++ and GLAD
+- Coder Space "Procedural 3D Engine, Ray Mrching OpenGL Tutorial" (https://www.youtube.com/watch?v=hUaYxqkrfjA)
 
 ## Related material
 
