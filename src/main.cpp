@@ -85,7 +85,7 @@ int main()
     glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
     glCompileShader(vertexShader);
 
-    std::string fragmentShaderSource = LoadShadersAsString("shaders/raymarching.glsl");
+    std::string fragmentShaderSource = LoadShadersAsString("shaders/raymarching-full.glsl");
     const char* fragmentShaderSourcePtr = fragmentShaderSource.c_str();
 
     GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
